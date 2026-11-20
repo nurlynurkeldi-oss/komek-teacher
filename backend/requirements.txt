@@ -18,4 +18,4 @@ pillow-heif==1.8.1
 
 # Face recognition for attendance (headless = no desktop libraries needed on the server)
 opencv-python-headless==5.1.0.95
-numpy==2.5.5
+numpy>=1.26,<3
