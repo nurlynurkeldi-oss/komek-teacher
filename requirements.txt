@@ -1,0 +1,2 @@
+# Render may build from the repository root (Root Directory empty): use the backend requirements.
+-r backend/requirements.txt
