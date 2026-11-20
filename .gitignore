@@ -1,0 +1,28 @@
+# ---- secrets: API keys live only in backend/.env (never commit it) ----
+.env
+*.env
+!.env.example
+backend/.env
+
+# ---- databases and user data (teachers, students, uploaded photos, face prints) ----
+*.db
+*.sqlite
+*.sqlite3
+backend/data/
+
+# ---- face recognition models (downloaded during the build: backend/download_models.py) ----
+backend/models/
+
+# ---- Python ----
+backend/.venv/
+.venv/
+__pycache__/
+*.pyc
+
+# ---- local tools / OS ----
+.claude/
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

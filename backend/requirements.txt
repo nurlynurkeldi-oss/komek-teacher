@@ -1,0 +1,21 @@
+# Exact versions that were tested together (Python 3.13).
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+sqlalchemy==2.0.36
+pydantic==2.14.4
+python-multipart==0.0.20
+python-dotenv==1.0.1
+
+# AI providers (AI_MODE=gemini or claude)
+google-genai==3.6.1
+anthropic==2.11.0
+
+# Reading teacher material / student work
+python-docx==1.1.2
+python-pptx==1.0.2
+pillow==13.0.0
+pillow-heif==1.8.1
+
+# Face recognition for attendance (headless = no desktop libraries needed on the server)
+opencv-python-headless==5.1.0.95
+numpy==2.5.5

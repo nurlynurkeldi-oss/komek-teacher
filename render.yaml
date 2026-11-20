@@ -1,0 +1,33 @@
+# Render Blueprint for Komek Teacher (one web service: FastAPI backend + the browser frontend).
+# Render → New → Blueprint → pick this repository. Then fill in GEMINI_API_KEY in the dashboard
+# (it is marked sync: false, so its value is never stored in this file or in GitHub).
+services:
+  - type: web
+    name: komek-teacher
+    runtime: python
+    plan: free                       # free instances sleep after ~15 min idle and lose local files on restart
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python download_models.py
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.3
+      - key: AI_MODE
+        value: gemini
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash
+      - key: GEMINI_API_KEY
+        sync: false                  # you type the key in the Render dashboard
+      - key: MAX_UPLOAD_MB
+        value: "20"
+      # --- Keep data between deploys (needs a paid plan with a persistent disk) ---
+      # Uncomment these two and the `disk:` block below, and change `plan: free` to `plan: starter`.
+      # - key: DATABASE_URL
+      #   value: sqlite:////var/data/app.db
+      # - key: STORAGE_DIR
+      #   value: /var/data/uploads
+    # disk:
+    #   name: komek-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
